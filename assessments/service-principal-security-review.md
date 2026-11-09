@@ -110,3 +110,25 @@ This finding does not establish that the application has no access through other
 Maintain least-privilege access. Grant Azure RBAC roles only when the application has a documented requirement, and scope those assignments to the minimum necessary resources.
 
 No permissions were changed during this assessment.
+## 12. Service Principal Ownership Review
+
+The service principal owner query returned no owners.
+
+### Security observation
+
+No application owners were identified through the inspected Microsoft Entra service principal owner records.
+
+An owner should be assigned to provide accountability for application identity governance, permission reviews and lifecycle management.
+
+### Recommendation
+
+1. Identify the responsible application or security team.
+2. Assign an appropriate owner through Microsoft Entra.
+3. Review ownership periodically.
+4. Ensure ownership is transferred when personnel or responsibilities change.
+
+### Evidence limitation
+
+The empty owner query does not establish that no team or individual is operationally responsible. It establishes only that no owners were returned by this query.
+
+No ownership settings were changed during this assessment.
