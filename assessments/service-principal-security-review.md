@@ -76,6 +76,18 @@ The Enterprise Application currently presents a minimally configured service pri
 
 Further investigation is required to reconcile the missing App registrations entry and establish the application's ownership and operational purpose.
 
-**Evidence classification:** Live Microsoft Entra portal observations.
+## 10. Azure CLI Verification
 
-**Project:** BonganiSecure Azure Workload Identity and RBAC Security Lab.
+The service principal was independently inspected using Azure Cloud Shell.
+
+| Attribute | Result |
+|---|---|
+| Service principal returned by CLI | Yes |
+| Account enabled | True |
+| Display name search | Successful using partial-name matching |
+
+This confirms that the Enterprise Application's service principal is enabled and retrievable through Azure CLI.
+
+The initial exact-name query returned no results, but a partial-name search successfully located the service principal.
+
+No application configuration or permissions were changed during this verification.
