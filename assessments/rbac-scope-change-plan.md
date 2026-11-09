@@ -69,4 +69,37 @@ No RBAC assignments have been modified as part of this planning exercise.
 
 ## 9. Engineering outcome
 
-This change plan demonstrates Azure IAM engineering practices, including least privilege, RBAC scope management, change control, verification and rollback planning.
+This change plan demonstrates Azure IAM engineering practices, including least privilege, RBAC scope management, change control, ve## 7. Implementation and Verification Results
+
+**Implementation status: Completed and verified**
+
+The Reader role assignment for `mi-bongani-day1` was successfully created at the `BonganiSecurity` resource-group scope.
+
+### Verification evidence
+
+Azure Cloud Shell returned the following role assignment:
+
+| Property | Verified value |
+|---|---|
+| Identity | mi-bongani-day1 |
+| Role | Reader |
+| Scope | BonganiSecurity resource group |
+| Assignment status | Successfully created |
+| Verification | Confirmed using Azure CLI |
+
+A second verification query targeting the resource-group scope returned the same Reader assignment.
+
+### Security outcome
+
+The identity's visible Reader assignment is now scoped to the `BonganiSecurity` resource group rather than the subscription.
+
+This follows the principle of least privilege by restricting the assignment's scope.
+
+### Remaining validation
+
+- Test the identity's effective access against the intended workload.
+- Confirm whether the workload requires access to resources outside the resource group.
+- Review the assignment periodically.
+- Document any additional permissions only when a verified workload requirement exists.
+
+**Evidence limitation:** This confirms the role assignment and its scope. It does not independently prove that workload access has been tested or that all possible access paths have been reviewed.rification and rollback planning.
