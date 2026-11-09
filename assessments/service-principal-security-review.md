@@ -131,4 +131,60 @@ An owner should be assigned to provide accountability for application identity g
 
 The empty owner query does not establish that no team or individual is operationally responsible. It establishes only that no owners were returned by this query.
 
-No ownership settings were changed during this assessment.
+# Managed Identity RBAC Least-Privilege Improvement
+
+## 1. Current Configuration
+
+| Attribute | Current state |
+|---|---|
+| Identity | mi-bongani-day1 |
+| Identity type | User-assigned managed identity |
+| Role | Reader |
+| Scope | Azure subscription |
+| Additional roles identified | None |
+
+## 2. Security Observation
+
+The identity has subscription-wide Reader access.
+
+Reader is a read-only role, but its subscription-level scope provides visibility across a wider environment than may be required.
+
+## 3. Proposed Improvement
+
+Consider narrowing the Reader assignment to the BonganiSecurity resource group.
+
+| Attribute | Proposed state |
+|---|---|
+| Identity | mi-bongani-day1 |
+| Role | Reader |
+| Scope | BonganiSecurity resource group |
+
+## 4. Expected Security Benefit
+
+A narrower scope would reduce the identity's visibility into unrelated Azure resources.
+
+It would demonstrate least-privilege access design while retaining read-only access to the lab resource group.
+
+## 5. Preconditions
+
+Before implementing the change:
+
+1. Identify the workload using the identity.
+2. Confirm whether it requires subscription-wide visibility.
+3. Check for dependencies on resources outside BonganiSecurity.
+4. Confirm that resource-group Reader permissions satisfy the workload's requirements.
+5. Plan a controlled change and rollback.
+
+## 6. Implementation Status
+
+**Status: Proposed, not implemented.**
+
+The existing subscription-level Reader assignment has not been changed.
+
+No Azure permissions were modified during this assessment.
+
+## 7. Conclusion
+
+Reducing the scope of the managed identity's Reader role is a potential least-privilege improvement.
+
+Implementation should follow workload dependency validation and a controlled access-change process.
