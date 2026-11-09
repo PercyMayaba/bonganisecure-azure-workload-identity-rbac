@@ -91,3 +91,22 @@ This confirms that the Enterprise Application's service principal is enabled and
 The initial exact-name query returned no results, but a partial-name search successfully located the service principal.
 
 No application configuration or permissions were changed during this verification.
+## 11. Azure RBAC Assessment
+
+The Finance service principal was queried for Azure RBAC role assignments using Azure Cloud Shell.
+
+**Observed result:** No role assignments were returned.
+
+### Security interpretation
+
+No Azure RBAC permissions were identified for this service principal through the queried role assignments.
+
+This limits its direct Azure resource access through Azure RBAC, based on the evidence inspected.
+
+This finding does not establish that the application has no access through other authorization mechanisms, such as Microsoft Graph permissions or application-specific access controls.
+
+### Recommendation
+
+Maintain least-privilege access. Grant Azure RBAC roles only when the application has a documented requirement, and scope those assignments to the minimum necessary resources.
+
+No permissions were changed during this assessment.
